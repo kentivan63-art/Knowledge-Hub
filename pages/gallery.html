@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — KnowledgeHub</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<style>
+.gallery-masonry { columns: 4 220px; gap: 16px; }
+.g-item {
+  break-inside: avoid;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.g-item:hover { transform: scale(1.02); box-shadow: 0 12px 32px rgba(0,0,0,0.18); }
+.g-block {
+  width: 100%;
+  border-radius: 12px;
+  display: flex;
+  align-items: flex-end;
+  padding: 14px;
+}
+.g-label {
+  color: white;
+  font-size: 0.82rem;
+  font-weight: 700;
+  background: rgba(0,0,0,0.4);
+  padding: 5px 12px;
+  border-radius: 6px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: all 0.3s;
+  backdrop-filter: blur(4px);
+}
+.g-item:hover .g-label { opacity: 1; transform: translateY(0); }
+.filter-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+</style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <a href="../index.html" class="nav-logo">Knowledge<span>Hub</span></a>
+  <div class="nav-links">
+    <a href="../index.html">Home</a><a href="blog.html">Blog</a><a href="services.html">Services</a>
+    <a href="gallery.html" class="active">Gallery</a><a href="../info/about.html">About</a>
+    <a href="faq.html">FAQ</a><a href="../info/contact.html">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="themeToggle"><span class="sun">☀️</span><span class="moon">🌙</span></button>
+    <a href="login.html" class="btn-nav">Sign In</a>
+  </div>
+  <button class="hamburger" id="hamburger">☰</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html">Home</a><a href="blog.html">Blog</a><a href="services.html">Services</a>
+  <a href="gallery.html">Gallery</a><a href="../info/about.html">About</a><a href="faq.html">FAQ</a>
+  <a href="../info/contact.html">Contact</a><a href="login.html">Sign In</a>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="page-badge reveal">📸 Community Gallery</span>
+    <h1 class="reveal">Visuals from our <span class="gradient-text">creative community.</span></h1>
+    <p class="reveal">Browse stunning images, project showcases, and event moments shared by our members.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="filter-bar reveal">
+      <button class="topic-chip active-chip" style="--tc:#FF6B35;background:var(--c1);color:white" onclick="filterGallery('all', this)">All</button>
+      <button class="topic-chip" style="--tc:#FF6B35" onclick="filterGallery('design', this)">🎨 Design</button>
+      <button class="topic-chip" style="--tc:#7C3AED" onclick="filterGallery('tech', this)">🚀 Tech</button>
+      <button class="topic-chip" style="--tc:#059669" onclick="filterGallery('nature', this)">🌿 Nature</button>
+      <button class="topic-chip" style="--tc:#0891B2" onclick="filterGallery('photo', this)">📸 Photography</button>
+      <button class="topic-chip" style="--tc:#BE185D" onclick="filterGallery('event', this)">🎉 Events</button>
+    </div>
+
+    <div class="gallery-masonry" id="galleryGrid">
+
+      <div class="g-item reveal" data-cat="design" onclick="openLight('Design Inspiration','linear-gradient(135deg,#FF6B35,#F7931E)')">
+        <div class="g-block" style="height:240px;background:linear-gradient(135deg,#FF6B35,#F7931E)"><span class="g-label">Design Inspiration</span></div>
+      </div>
+      <div class="g-item reveal" data-cat="tech" onclick="openLight('Tech Project Showcase','linear-gradient(135deg,#7C3AED,#A855F7)')">
+        <div class="g-block" style="height:160px;background:linear-gradient(135deg,#7C3AED,#A855F7)"><span class="g-label">Tech Showcase</span></div>
+      </div>
+      <div class="g-item reveal" data-cat="nature" onclick="openLight('Nature Walk','linear-gradient(135deg,#059669,#10B981)')">
+        <div class="g-block" style="height:200px;background:linear-gradient(135deg,#059669,#10B981)"><span class="g-label">Nature Walk</span></div>
+      </div>
+      <div class="g-item reveal" data-cat="photo" onclick="openLight('Street Photography','linear-gradient(135deg,#0A0A0A,#3D3D3D)')">
+        <div class="g-block" style="height:180px;background:linear-gradient(135deg,#0A0A0A,#3D3D3D)"><span class="g-label">Street Photography</span></div>
+      </div>
+      <div class="g-item reveal" data-cat="event" onclick="openLight('Community Meetup','linear-gradient(135deg,#DC2626,#F87171)')">
+        <div class="g-block" style="height:220px;background:linear-gradient(135deg,#DC2626,#F87171)"><span class="g-label">Community Meetup</span></div>
+      </div>
+      <div class="g-item reveal" data-cat="design" onclick="openLight('Typography Poster','linear-gradient(135deg,#4F46E5,#818CF8)')">
+        <div class="g-block" style="height:190px;background:linear-gradient(135deg,#4F46E5,#818CF8)"><span class="g-label">Typography Poster</span></div>
+      </div>
+      <div class="g-item reveal" data-cat="photo" onclick="openLight('Golden Hour','linear-gradient(135deg,#D97706,#FBBF24)')">
+        <div class="g-block" style="height:250px;background:linear-gradient(135deg,#D97706,#FBBF24)"><span class="g-label">Golden Hour</span></div>
+      </div>
+      <div class="g-item reveal" data-cat="tech" onclick="openLight('Desk Setup','linear-gradient(135deg,#0891B2,#38BDF8)')">
+        <div class="g-block" style="height:170px;background:linear-gradient(135deg,#0891B2,#38BDF8)"><span class="g-label">Desk Setup</span></div>
+      </div>
+      <div class="g-item reveal" data-cat="event" onclick="openLight('Workshop Day','linear-gradient(135deg,#BE185D,#F472B6)')">
+        <div class="g-block" style="height:200px;background:linear-gradient(135deg,#BE185D,#F472B6)"><span class="g-label">Workshop Day</span></div>
+      </div>
+      <div class="g-item reveal" data-cat="nature" onclick="openLight('Forest Trail','linear-gradient(135deg,#065F46,#34D399)')">
+        <div class="g-block" style="height:230px;background:linear-gradient(135deg,#065F46,#34D399)"><span class="g-label">Forest Trail</span></div>
+      </div>
+      <div class="g-item reveal" data-cat="design" onclick="openLight('Color Study','linear-gradient(135deg,#FF6B35,#7C3AED)')">
+        <div class="g-block" style="height:160px;background:linear-gradient(135deg,#FF6B35,#7C3AED)"><span class="g-label">Color Study</span></div>
+      </div>
+      <div class="g-item reveal" data-cat="photo" onclick="openLight('Urban Geometry','linear-gradient(135deg,#374151,#6B7280)')">
+        <div class="g-block" style="height:210px;background:linear-gradient(135deg,#374151,#6B7280)"><span class="g-label">Urban Geometry</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.88);align-items:center;justify-content:center;cursor:pointer" onclick="document.getElementById('lightbox').style.display='none'">
+  <div id="lightboxInner" style="width:75vw;max-width:700px;height:460px;border-radius:20px;display:flex;align-items:center;justify-content:center;color:white;font-family:'Archivo Black',sans-serif;font-size:1.6rem;position:relative">
+    <span id="lightboxLabel"></span>
+    <span style="position:absolute;top:16px;right:20px;font-size:1.2rem;opacity:0.7">✕ close</span>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand"><div class="nav-logo">Knowledge<span>Hub</span></div><p>A space for curious minds to share and connect.</p></div>
+    <div class="footer-links"><h4>Navigate</h4><a href="../index.html">Home</a><a href="blog.html">Blog</a><a href="gallery.html">Gallery</a><a href="/info/about.html">About</a></div>
+    <div class="footer-links"><h4>Support</h4><a href="faq.html">FAQ</a><a href="../info/contact.html">Contact</a><a href="services.html">Services</a></div>
+    <div class="footer-links"><h4>Account</h4><a href="login.html">Sign In</a><a href="login.html#register">Register</a></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 KnowledgeHub. Made with ❤️ for knowledge sharers.</p></div>
+</footer>
+<div class="chat-bubble" id="chatBubble">💬</div>
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header"><span>💬 Live Support</span><button id="chatClose">✕</button></div>
+  <div class="chat-messages" id="chatMessages"><div class="chat-msg bot">👋 Hi! Love the gallery? Ask me anything!</div></div>
+  <div class="chat-input-row"><input type="text" id="chatInput" placeholder="Type a message..."><button id="chatSend">Send</button></div>
+</div>
+<script src="../assets/js/main.js"></script>
+<script>
+function openLight(label, bg) {
+  const lb = document.getElementById('lightbox');
+  const inner = document.getElementById('lightboxInner');
+  const lbl = document.getElementById('lightboxLabel');
+  inner.style.background = bg;
+  lbl.textContent = label;
+  lb.style.display = 'flex';
+}
+function filterGallery(cat, btn) {
+  document.querySelectorAll('.g-item').forEach(item => {
+    item.style.display = (cat === 'all' || item.dataset.cat === cat) ? 'block' : 'none';
+  });
+  document.querySelectorAll('.filter-bar .topic-chip').forEach(c => {
+    c.style.background = '';
+    c.style.color = '';
+  });
+  if (btn) {
+    btn.style.background = 'var(--c1)';
+    btn.style.color = 'white';
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — KnowledgeHub</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <a href="../index.html" class="nav-logo">Knowledge<span>Hub</span></a>
+  <div class="nav-links">
+    <a href="../index.html">Home</a><a href="../pages/blog.html">Blog</a><a href="../pages/services.html">Services</a>
+    <a href="../pages/gallery.html">Gallery</a><a href="about.html">About</a>
+    <a href="../pages/faq.html">FAQ</a><a href="contact.html" class="active">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="themeToggle"><span class="sun">☀️</span><span class="moon">🌙</span></button>
+    <a href="login.html" class="btn-nav">Sign In</a>
+  </div>
+  <button class="hamburger" id="hamburger">☰</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html">Home</a><a href="../pages/blog.html">Blog</a><a href="../pages/services.html">Services</a>
+  <a href="../pages/gallery.html">Gallery</a><a href="about.html">About</a><a href="../pages/faq.html">FAQ</a>
+  <a href="contact.html">Contact</a><a href="login.html">Sign In</a>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="page-badge reveal">📬 Get In Touch</span>
+    <h1 class="reveal">We'd love to <span class="gradient-text">hear from you.</span></h1>
+    <p class="reveal">Whether you have a question, feedback, or just want to say hi — our team is here for you.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-layout">
+      <div>
+        <h2 style="font-family:var(--font-heading);font-weight:800;font-size:1.6rem;margin-bottom:8px" class="reveal">Send us a message</h2>
+        <p style="color:var(--text3);margin-bottom:32px" class="reveal">We typically respond within 24 hours on business days.</p>
+        <form class="contact-form reveal" id="contactForm">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" class="form-input" placeholder="Ana" required>
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" class="form-input" placeholder="Cruz" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" class="form-input" placeholder="ana@example.com" required>
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <select class="form-input">
+              <option>General Inquiry</option>
+              <option>Technical Support</option>
+              <option>Pro Plan Question</option>
+              <option>Partnership / Collaboration</option>
+              <option>Report Content</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea class="form-input" rows="5" placeholder="Tell us what's on your mind..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;text-align:center">Send Message</button>
+        </form>
+      </div>
+
+      <div class="contact-info reveal">
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin-bottom:28px">
+          <h3 style="font-family:var(--font-heading);font-weight:700;margin-bottom:24px">Contact Details</h3>
+          <div class="contact-info-item">
+            <div class="contact-icon" style="background:rgba(255,107,53,0.12)">📧</div>
+            <div>
+              <h4>Email</h4>
+              <p>hello@knowledgehub.ph</p>
+            </div>
+          </div>
+          <div class="contact-info-item" style="margin-top:20px">
+            <div class="contact-icon" style="background:rgba(124,58,237,0.12)">💬</div>
+            <div>
+              <h4>Live Chat</h4>
+              <p>Available on every page — click the orange chat button!</p>
+            </div>
+          </div>
+          <div class="contact-info-item" style="margin-top:20px">
+            <div class="contact-icon" style="background:rgba(5,150,105,0.12)">🕐</div>
+            <div>
+              <h4>Response Time</h4>
+              <p>Mon–Fri, 9AM–6PM PHT · Usually within 24 hrs</p>
+            </div>
+          </div>
+          <div class="contact-info-item" style="margin-top:20px">
+            <div class="contact-icon" style="background:rgba(8,145,178,0.12)">📍</div>
+            <div>
+              <h4>Based in</h4>
+              <p>Cebu City, Philippines 🇵🇭</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:linear-gradient(135deg,var(--c2),var(--c8));border-radius:var(--radius);padding:32px;color:white">
+          <h3 style="font-family:var(--font-heading);font-weight:700;margin-bottom:12px">Follow us online</h3>
+          <p style="opacity:0.85;margin-bottom:20px;font-size:0.92rem">Stay updated with community stories, tips, and announcements.</p>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <a href="#" style="display:flex;align-items:center;gap:12px;color:white;font-weight:600;font-size:0.9rem;opacity:0.9;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.9">🐦 Twitter / X — @KnowledgeHubPH</a>
+            <a href="#" style="display:flex;align-items:center;gap:12px;color:white;font-weight:600;font-size:0.9rem;opacity:0.9;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.9">📘 Facebook — KnowledgeHub PH</a>
+            <a href="#" style="display:flex;align-items:center;gap:12px;color:white;font-weight:600;font-size:0.9rem;opacity:0.9;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.9">📸 Instagram — @knowledgehub.ph</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand"><div class="nav-logo">Knowledge<span>Hub</span></div><p>A space for curious minds to share and connect.</p></div>
+    <div class="footer-links"><h4>Navigate</h4><a href="../index.html">Home</a><a href="../pages/blog.html">Blog</a><a href="../pages/gallery.html">Gallery</a><a href="about.html">About</a></div>
+    <div class="footer-links"><h4>Support</h4><a href="../pages/faq.html">FAQ</a><a href="contact.html">Contact</a><a href="../pages/services.html">Services</a></div>
+    <div class="footer-links"><h4>Account</h4><a href="login.html">Sign In</a><a href="login.html#register">Register</a></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 KnowledgeHub. Made with ❤️ for knowledge sharers.</p></div>
+</footer>
+<div class="chat-bubble" id="chatBubble">💬</div>
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header"><span>💬 Live Support</span><button id="chatClose">✕</button></div>
+  <div class="chat-messages" id="chatMessages"><div class="chat-msg bot">👋 Hi! You can also use the form on the left to reach us.</div></div>
+  <div class="chat-input-row"><input type="text" id="chatInput" placeholder="Type a message..."><button id="chatSend">Send</button></div>
+</div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

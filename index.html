@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KnowledgeHub — Share What You Love</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo">Knowledge<span>Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Home</a>
+    <a href="pages/blog.html">Blog</a>
+    <a href="pages/services.html">Services</a>
+    <a href="pages/gallery.html">Gallery</a>
+    <a href="info/about.html">About</a>
+    <a href="pages/faq.html">FAQ</a>
+    <a href="info/contact.html">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+      <span class="sun">☀️</span><span class="moon">🌙</span>
+    </button>
+    <a href="login.html" class="btn-nav">Sign In</a>
+  </div>
+  <button class="hamburger" id="hamburger">☰</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="blog.html">Blog</a>
+  <a href="services.html">Services</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="about.html">About</a>
+  <a href="faq.html">FAQ</a>
+  <a href="contact.html">Contact</a>
+  <a href="login.html">Sign In</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge reveal">🔥 Community-Powered Knowledge</div>
+    <h1 class="hero-title reveal">
+      Share What<br>
+      <span class="gradient-text">You Love.</span><br>
+      Find Your<br>
+      <span class="outline-text">People.</span>
+    </h1>
+    <p class="hero-desc reveal">A bold space for passionate minds to post, share, and grow together — whatever your interest, there's a tribe waiting for you.</p>
+    <div class="hero-cta reveal">
+      <a href="login.html" class="btn-primary">Start Posting Free</a>
+      <a href="blog.html" class="btn-ghost">Explore Posts →</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div class="stat"><span class="stat-num" data-target="12400">0</span><span class="stat-label">Writers</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num" data-target="58300">0</span><span class="stat-label">Posts</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num" data-target="940000">0</span><span class="stat-label">Readers</span></div>
+    </div>
+  </div>
+  <div class="hero-visual reveal">
+    <div class="floating-cards">
+      <div class="f-card f-card-1">
+        <div class="f-tag" style="background:#FF6B35">🎨 Design</div>
+        <p>Why bold colors change how people think</p>
+        <div class="f-meta">Ana Cruz · 2 min read</div>
+      </div>
+      <div class="f-card f-card-2">
+        <div class="f-tag" style="background:#7C3AED">🚀 Tech</div>
+        <p>Building your first web app from scratch</p>
+        <div class="f-meta">Marco Lee · 5 min read</div>
+      </div>
+      <div class="f-card f-card-3">
+        <div class="f-tag" style="background:#059669">🌱 Growth</div>
+        <p>Small habits that compound into big wins</p>
+        <div class="f-meta">Sita R. · 3 min read</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRENDING TOPICS -->
+<section class="section topics-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Trending Topics</h2>
+      <a href="blog.html" class="see-all">See all →</a>
+    </div>
+    <div class="topics-grid">
+      <div class="topic-chip" style="--tc:#FF6B35">🎨 Design</div>
+      <div class="topic-chip" style="--tc:#7C3AED">🚀 Tech</div>
+      <div class="topic-chip" style="--tc:#059669">🌱 Growth</div>
+      <div class="topic-chip" style="--tc:#DC2626">❤️ Lifestyle</div>
+      <div class="topic-chip" style="--tc:#D97706">📚 Education</div>
+      <div class="topic-chip" style="--tc:#0891B2">🎵 Music</div>
+      <div class="topic-chip" style="--tc:#BE185D">📸 Photography</div>
+      <div class="topic-chip" style="--tc:#4F46E5">💡 Ideas</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED POSTS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Featured Posts</h2>
+      <a href="blog.html" class="see-all">View all →</a>
+    </div>
+    <div class="posts-grid">
+      <article class="post-card post-featured">
+        <div class="post-img" style="background: linear-gradient(135deg,#FF6B35,#F7931E)">
+          <span class="post-cat">🎨 Design</span>
+        </div>
+        <div class="post-body">
+          <h3>Why Bold Typography Is the New Brand Identity in 2025</h3>
+          <p>Explore how leading designers are ditching safe fonts and embracing expressive type to tell brand stories.</p>
+          <div class="post-footer">
+            <div class="author">
+              <div class="avatar" style="background:#FF6B35">A</div>
+              <span>Ana Cruz</span>
+            </div>
+            <span class="read-time">4 min read</span>
+          </div>
+        </div>
+      </article>
+      <article class="post-card">
+        <div class="post-img" style="background: linear-gradient(135deg,#7C3AED,#A855F7)">
+          <span class="post-cat">🚀 Tech</span>
+        </div>
+        <div class="post-body">
+          <h3>Building a Side Project Without Burning Out</h3>
+          <p>Practical tips for solo builders who want to ship something meaningful while keeping their sanity.</p>
+          <div class="post-footer">
+            <div class="author">
+              <div class="avatar" style="background:#7C3AED">M</div>
+              <span>Marco Lee</span>
+            </div>
+            <span class="read-time">5 min read</span>
+          </div>
+        </div>
+      </article>
+      <article class="post-card">
+        <div class="post-img" style="background: linear-gradient(135deg,#059669,#10B981)">
+          <span class="post-cat">🌱 Growth</span>
+        </div>
+        <div class="post-body">
+          <h3>The Power of Learning in Public: Share & Grow</h3>
+          <p>When you write what you learn, you solidify knowledge and attract people who share your passion.</p>
+          <div class="post-footer">
+            <div class="author">
+              <div class="avatar" style="background:#059669">S</div>
+              <span>Sita Ramos</span>
+            </div>
+            <span class="read-time">3 min read</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY PREVIEW -->
+<section class="section gallery-preview-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">From the Gallery</h2>
+      <a href="gallery.html" class="see-all">Explore →</a>
+    </div>
+    <div class="gallery-strip">
+      <div class="gallery-item gi-1"><span>Design Inspiration</span></div>
+      <div class="gallery-item gi-2"><span>Tech Projects</span></div>
+      <div class="gallery-item gi-3"><span>Creative Shots</span></div>
+      <div class="gallery-item gi-4"><span>Community Moments</span></div>
+      <div class="gallery-item gi-5"><span>Event Highlights</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-section">
+  <div class="cta-blob cta-blob-1"></div>
+  <div class="cta-blob cta-blob-2"></div>
+  <div class="container cta-inner">
+    <h2>Ready to share your knowledge?</h2>
+    <p>Join thousands of passionate people who write, connect, and grow every day.</p>
+    <a href="login.html" class="btn-primary">Create Your Free Account</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo">Knowledge<span>Hub</span></div>
+      <p>A space for curious minds to share, discover, and connect over shared passions.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Navigate</h4>
+      <a href="index.html">Home</a>
+      <a href="blog.html">Blog</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About</a>
+    </div>
+    <div class="footer-links">
+      <h4>Support</h4>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="services.html">Services</a>
+    </div>
+    <div class="footer-links">
+      <h4>Account</h4>
+      <a href="login.html">Sign In</a>
+      <a href="login.html#register">Register</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 KnowledgeHub. Made with ❤️ for knowledge sharers.</p>
+  </div>
+</footer>
+
+<!-- CHAT WIDGET -->
+<div class="chat-bubble" id="chatBubble" title="Live Chat">💬</div>
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header">
+    <span>💬 Live Support</span>
+    <button id="chatClose">✕</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-msg bot">👋 Hi! Welcome to KnowledgeHub. How can I help you today?</div>
+  </div>
+  <div class="chat-input-row">
+    <input type="text" id="chatInput" placeholder="Type a message..." />
+    <button id="chatSend">Send</button>
+  </div>
+</div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

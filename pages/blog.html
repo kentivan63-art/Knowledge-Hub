@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — KnowledgeHub</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo">Knowledge<span>Hub</span></a>
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="blog.html" class="active">Blog</a>
+    <a href="services.html">Services</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="../info/about.html">About</a>
+    <a href="faq.html">FAQ</a>
+    <a href="../info/contact.html">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="themeToggle"><span class="sun">☀️</span><span class="moon">🌙</span></button>
+    <a href="login.html" class="btn-nav">Sign In</a>
+  </div>
+  <button class="hamburger" id="hamburger">☰</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html">Home</a><a href="blog.html">Blog</a><a href="services.html">Services</a>
+  <a href="gallery.html">Gallery</a><a href="../info/about.html">About</a><a href="faq.html">FAQ</a>
+  <a href="../info/contact.html">Contact</a><a href="login.html">Sign In</a>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="page-badge reveal">📝 Our Blog</span>
+    <h1 class="reveal">Knowledge worth <span class="gradient-text">sharing.</span></h1>
+    <p class="reveal">Discover posts from our passionate community — written by real people who love what they do.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <!-- Filter chips -->
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px" class="reveal">
+      <button class="topic-chip" style="--tc:#FF6B35;background:var(--c1);color:white" onclick="filterPosts('all')">All Posts</button>
+      <button class="topic-chip" style="--tc:#FF6B35" onclick="filterPosts('design')">🎨 Design</button>
+      <button class="topic-chip" style="--tc:#7C3AED" onclick="filterPosts('tech')">🚀 Tech</button>
+      <button class="topic-chip" style="--tc:#059669" onclick="filterPosts('growth')">🌱 Growth</button>
+      <button class="topic-chip" style="--tc:#DC2626" onclick="filterPosts('lifestyle')">❤️ Lifestyle</button>
+      <button class="topic-chip" style="--tc:#D97706" onclick="filterPosts('education')">📚 Education</button>
+    </div>
+
+    <div class="blog-layout">
+      <div class="blog-posts" id="blogPosts">
+
+        <article class="blog-post-card reveal" data-cat="design">
+          <div class="blog-post-img" style="background:linear-gradient(135deg,#FF6B35,#F7931E)"></div>
+          <div class="blog-post-body">
+            <span class="post-cat" style="background:#FF6B35;color:white;padding:4px 12px;border-radius:50px;font-size:0.78rem;font-weight:700;margin-bottom:8px;display:inline-block">🎨 Design</span>
+            <h3>Why Bold Typography Is the New Brand Identity in 2025</h3>
+            <p>Explore how leading designers are ditching safe fonts and embracing expressive type to tell brand stories that stick.</p>
+            <div class="post-footer">
+              <div class="author"><div class="avatar" style="background:#FF6B35">A</div><span>Ana Cruz</span></div>
+              <span class="read-time">4 min read · June 12</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-post-card reveal" data-cat="tech">
+          <div class="blog-post-img" style="background:linear-gradient(135deg,#7C3AED,#A855F7)"></div>
+          <div class="blog-post-body">
+            <span class="post-cat" style="background:#7C3AED;color:white;padding:4px 12px;border-radius:50px;font-size:0.78rem;font-weight:700;margin-bottom:8px;display:inline-block">🚀 Tech</span>
+            <h3>Building a Side Project Without Burning Out</h3>
+            <p>Practical, honest tips for solo builders who want to ship something meaningful while keeping their mental health intact.</p>
+            <div class="post-footer">
+              <div class="author"><div class="avatar" style="background:#7C3AED">M</div><span>Marco Lee</span></div>
+              <span class="read-time">5 min read · June 10</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-post-card reveal" data-cat="growth">
+          <div class="blog-post-img" style="background:linear-gradient(135deg,#059669,#10B981)"></div>
+          <div class="blog-post-body">
+            <span class="post-cat" style="background:#059669;color:white;padding:4px 12px;border-radius:50px;font-size:0.78rem;font-weight:700;margin-bottom:8px;display:inline-block">🌱 Growth</span>
+            <h3>The Power of Learning in Public: Share & Grow Together</h3>
+            <p>When you write what you learn, you solidify your knowledge and attract people who share your exact passion.</p>
+            <div class="post-footer">
+              <div class="author"><div class="avatar" style="background:#059669">S</div><span>Sita Ramos</span></div>
+              <span class="read-time">3 min read · June 9</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-post-card reveal" data-cat="lifestyle">
+          <div class="blog-post-img" style="background:linear-gradient(135deg,#DC2626,#F87171)"></div>
+          <div class="blog-post-body">
+            <span class="post-cat" style="background:#DC2626;color:white;padding:4px 12px;border-radius:50px;font-size:0.78rem;font-weight:700;margin-bottom:8px;display:inline-block">❤️ Lifestyle</span>
+            <h3>Morning Routines That Actually Work for Night Owls</h3>
+            <p>Not everyone is a morning person — and that's okay. Here's how to design a routine that fits who you actually are.</p>
+            <div class="post-footer">
+              <div class="author"><div class="avatar" style="background:#DC2626">J</div><span>Jay Mendoza</span></div>
+              <span class="read-time">6 min read · June 7</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-post-card reveal" data-cat="education">
+          <div class="blog-post-img" style="background:linear-gradient(135deg,#D97706,#FBBF24)"></div>
+          <div class="blog-post-body">
+            <span class="post-cat" style="background:#D97706;color:white;padding:4px 12px;border-radius:50px;font-size:0.78rem;font-weight:700;margin-bottom:8px;display:inline-block">📚 Education</span>
+            <h3>How to Teach Yourself Anything: A Framework That Works</h3>
+            <p>Self-directed learning is a superpower. Here's the exact system I use to pick up any skill in record time.</p>
+            <div class="post-footer">
+              <div class="author"><div class="avatar" style="background:#D97706">K</div><span>Kira Tan</span></div>
+              <span class="read-time">7 min read · June 5</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-post-card reveal" data-cat="tech">
+          <div class="blog-post-img" style="background:linear-gradient(135deg,#0891B2,#38BDF8)"></div>
+          <div class="blog-post-body">
+            <span class="post-cat" style="background:#0891B2;color:white;padding:4px 12px;border-radius:50px;font-size:0.78rem;font-weight:700;margin-bottom:8px;display:inline-block">🚀 Tech</span>
+            <h3>AI Tools I Actually Use Every Day as a Developer</h3>
+            <p>Cutting through the hype — these are the tools that have genuinely transformed my workflow and saved hours.</p>
+            <div class="post-footer">
+              <div class="author"><div class="avatar" style="background:#0891B2">L</div><span>Lena Park</span></div>
+              <span class="read-time">4 min read · June 3</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-widget">
+          <h4>Search</h4>
+          <div class="search-box">
+            <input type="text" placeholder="Search posts...">
+            <button>🔍</button>
+          </div>
+        </div>
+        <div class="sidebar-widget">
+          <h4>Popular Tags</h4>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span class="topic-chip" style="--tc:#FF6B35;font-size:0.8rem;padding:6px 14px">Design</span>
+            <span class="topic-chip" style="--tc:#7C3AED;font-size:0.8rem;padding:6px 14px">Tech</span>
+            <span class="topic-chip" style="--tc:#059669;font-size:0.8rem;padding:6px 14px">Growth</span>
+            <span class="topic-chip" style="--tc:#D97706;font-size:0.8rem;padding:6px 14px">Learning</span>
+            <span class="topic-chip" style="--tc:#DC2626;font-size:0.8rem;padding:6px 14px">Lifestyle</span>
+            <span class="topic-chip" style="--tc:#0891B2;font-size:0.8rem;padding:6px 14px">AI</span>
+          </div>
+        </div>
+        <div class="sidebar-widget">
+          <h4>Top Writers</h4>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;align-items:center;gap:12px">
+              <div class="avatar" style="background:#FF6B35;width:36px;height:36px;font-size:0.9rem">A</div>
+              <div><p style="font-weight:700;font-size:0.88rem">Ana Cruz</p><p style="font-size:0.8rem;color:var(--text3)">24 posts · Design</p></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <div class="avatar" style="background:#7C3AED;width:36px;height:36px;font-size:0.9rem">M</div>
+              <div><p style="font-weight:700;font-size:0.88rem">Marco Lee</p><p style="font-size:0.8rem;color:var(--text3)">18 posts · Tech</p></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <div class="avatar" style="background:#059669;width:36px;height:36px;font-size:0.9rem">S</div>
+              <div><p style="font-weight:700;font-size:0.88rem">Sita Ramos</p><p style="font-size:0.8rem;color:var(--text3)">15 posts · Growth</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="sidebar-widget" style="background:linear-gradient(135deg,var(--c2),var(--c8));border:none;color:white">
+          <h4 style="color:white">✍️ Write for us</h4>
+          <p style="font-size:0.88rem;opacity:0.85;margin-bottom:16px;line-height:1.6">Share your knowledge with 940,000+ readers.</p>
+          <a href="login.html" class="btn-primary" style="width:100%;text-align:center;display:block;background:white;color:var(--c2)">Start Writing</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand"><div class="nav-logo">Knowledge<span>Hub</span></div><p>A space for curious minds to share, discover, and connect.</p></div>
+    <div class="footer-links"><h4>Navigate</h4><a href="../index.html">Home</a><a href="/pages/blog.html">Blog</a><a href="gallery.html">Gallery</a><a href="../info/about.html">About</a></div>
+    <div class="footer-links"><h4>Support</h4><a href="faq.html">FAQ</a><a href="../info/contact.html">Contact</a><a href="services.html">Services</a></div>
+    <div class="footer-links"><h4>Account</h4><a href="login.html">Sign In</a><a href="login.html#register">Register</a></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 KnowledgeHub. Made with ❤️ for knowledge sharers.</p></div>
+</footer>
+<div class="chat-bubble" id="chatBubble">💬</div>
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header"><span>💬 Live Support</span><button id="chatClose">✕</button></div>
+  <div class="chat-messages" id="chatMessages"><div class="chat-msg bot">👋 Hi! How can I help you today?</div></div>
+  <div class="chat-input-row"><input type="text" id="chatInput" placeholder="Type a message..."><button id="chatSend">Send</button></div>
+</div>
+<script src="../assets/js/main.js"></script>
+<script>
+function filterPosts(cat) {
+  document.querySelectorAll('.blog-post-card').forEach(card => {
+    card.style.display = (cat === 'all' || card.dataset.cat === cat) ? 'grid' : 'none';
+  });
+  document.querySelectorAll('.topic-chip').forEach(c => {
+    c.style.background = '';
+    c.style.color = '';
+  });
+}
+</script>
+</body>
+</html>
