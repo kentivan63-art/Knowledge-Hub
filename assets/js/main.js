@@ -157,16 +157,7 @@ contactForm?.addEventListener('submit', e => {
 });
 
 // ---- LOGIN / REGISTER FORM ----
-const loginForm = document.getElementById('loginForm');
-const registerForm = document.getElementById('registerForm');
-loginForm?.addEventListener('submit', e => {
-  e.preventDefault();
-  alert('✅ Welcome back to KnowledgeHub!');
-});
-registerForm?.addEventListener('submit', e => {
-  e.preventDefault();
-  alert('🎉 Account created! Welcome to KnowledgeHub!');
-});
+
 
 // ---- APPLY SAVED THEME ON ALL PAGES ----
 (function() {

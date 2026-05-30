@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In — KnowledgeHub</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<style>
+.login-page { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
+.login-visual {
+  background: linear-gradient(145deg, #FF6B35 0%, #7C3AED 50%, #4F46E5 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 60px; color: white; position: relative; overflow: hidden;
+}
+.login-visual::before {
+  content: ''; position: absolute;
+  width: 500px; height: 500px; background: rgba(255,255,255,0.07);
+  border-radius: 50%; top: -180px; right: -150px;
+}
+.login-visual::after {
+  content: ''; position: absolute;
+  width: 300px; height: 300px; background: rgba(255,255,255,0.06);
+  border-radius: 50%; bottom: -100px; left: -80px;
+}
+.login-visual-content { position: relative; z-index: 1; text-align: center; }
+.login-visual h2 { font-family: var(--font-display); font-size: 2.6rem; margin-bottom: 16px; line-height: 1.1; }
+.login-visual p { opacity: 0.88; line-height: 1.7; max-width: 340px; margin: 0 auto 36px; }
+.login-perks { display: flex; flex-direction: column; gap: 14px; text-align: left; }
+.perk { display: flex; align-items: center; gap: 12px; font-size: 0.92rem; font-weight: 500; }
+.perk-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.18); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+.login-form-side {
+  display: flex; align-items: center; justify-content: center;
+  padding: 60px 48px; background: var(--bg);
+}
+.login-box { width: 100%; max-width: 420px; }
+.login-logo { font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 32px; display: inline-block; }
+.login-logo span { color: var(--c1); }
+.login-box h3 { font-family: var(--font-heading); font-size: 1.9rem; font-weight: 800; margin-bottom: 6px; }
+.login-box .sub { color: var(--text3); margin-bottom: 28px; font-size: 0.95rem; }
+.tab-row { display: flex; border: 1.5px solid var(--border); border-radius: 12px; margin-bottom: 28px; overflow: hidden; }
+.tab-btn { flex: 1; padding: 11px; background: none; border: none; cursor: pointer; font-weight: 700; color: var(--text3); font-family: var(--font-body); font-size: 0.95rem; transition: all 0.25s; }
+.tab-btn.active { background: var(--c2); color: white; }
+.form-panel { display: flex; flex-direction: column; gap: 16px; }
+.form-panel.hidden { display: none; }
+.divider { display: flex; align-items: center; gap: 12px; color: var(--text3); font-size: 0.82rem; }
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.social-row { display: flex; gap: 10px; }
+.social-btn {
+  flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 11px; border: 1.5px solid var(--border); border-radius: 10px;
+  background: var(--bg); color: var(--text); font-family: var(--font-body);
+  font-weight: 600; font-size: 0.88rem; cursor: pointer; transition: var(--transition);
+}
+.social-btn:hover { border-color: var(--c2); background: var(--bg2); }
+.forgot { font-size: 0.85rem; color: var(--c2); font-weight: 600; text-align: right; display: block; margin-top: -8px; }
+.forgot:hover { text-decoration: underline; }
+.switch-text { text-align: center; font-size: 0.88rem; color: var(--text3); margin-top: 8px; }
+.switch-text a { color: var(--c1); font-weight: 700; }
+.form-input { padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 10px; background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 0.95rem; transition: var(--transition); outline: none; width: 100%; }
+.form-input:focus { border-color: var(--c2); box-shadow: 0 0 0 3px rgba(124,58,237,0.12); }
+.form-group { display: flex; flex-direction: column; gap: 7px; }
+.form-group label { font-weight: 600; font-size: 0.88rem; color: var(--text2); }
+.input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.terms { font-size: 0.82rem; color: var(--text3); line-height: 1.6; }
+.terms a { color: var(--c2); }
+@media (max-width: 768px) {
+  .login-page { grid-template-columns: 1fr; }
+  .login-visual { display: none; }
+  .login-form-side { padding: 100px 24px 40px; }
+}
+</style>
+</head>
+<body>
+
+<div class="login-page">
+
+  <!-- LEFT VISUAL PANEL -->
+  <div class="login-visual">
+    <div class="login-visual-content">
+      <div style="font-family:var(--font-display);font-size:1.5rem;margin-bottom:36px">Knowledge<span style="color:rgba(255,255,255,0.7)">Hub</span></div>
+      <h2>Share what<br>you know.<br>Find your tribe.</h2>
+      <p>Join thousands of passionate writers and readers who connect over shared knowledge and goals every day.</p>
+      <div class="login-perks">
+        <div class="perk"><div class="perk-icon">✍️</div><span>Write unlimited posts for free</span></div>
+        <div class="perk"><div class="perk-icon">🌐</div><span>Get your own author profile page</span></div>
+        <div class="perk"><div class="perk-icon">🤝</div><span>Join communities that match your passion</span></div>
+        <div class="perk"><div class="perk-icon">📈</div><span>Grow your audience and influence</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT FORM PANEL -->
+  <div class="login-form-side">
+    <div class="login-box">
+      <a href="../index.html" class="login-logo">Knowledge<span>Hub</span></a>
+
+      <!-- TABS -->
+      <div class="tab-row">
+        <button class="tab-btn active" id="tabSignIn" onclick="switchTab('signin')">Sign In</button>
+        <button class="tab-btn" id="tabRegister" onclick="switchTab('register')">Create Account</button>
+      </div>
+
+      <!-- SIGN IN FORM -->
+      <div id="signinPanel" class="form-panel">
+        <h3>Welcome back 👋</h3>
+        <p class="sub">Sign in to your KnowledgeHub account.</p>
+
+        <div class="social-row">
+          <button class="social-btn">🌐 Google</button>
+          <button class="social-btn">🐦 Twitter</button>
+        </div>
+        <div class="divider">or continue with email</div>
+
+        <form id="loginForm" style="display:flex;flex-direction:column;gap:16px">
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" class="form-input" placeholder="you@example.com" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-input" placeholder="Enter your password" required>
+          </div>
+          <a href="#" class="forgot">Forgot password?</a>
+          <button type="submit" class="btn-primary" style="width:100%;text-align:center;padding:14px">Sign In</button>
+        </form>
+        <p class="switch-text">Don't have an account? <a href="#" onclick="switchTab('register')">Create one free →</a></p>
+      </div>
+
+      <!-- REGISTER FORM -->
+      <div id="registerPanel" class="form-panel hidden">
+        <h3>Join us today 🎉</h3>
+        <p class="sub">Create your free KnowledgeHub account.</p>
+
+        <div class="social-row">
+          <button class="social-btn">🌐 Google</button>
+          <button class="social-btn">🐦 Twitter</button>
+        </div>
+        <div class="divider">or register with email</div>
+
+        <form id="registerForm" style="display:flex;flex-direction:column;gap:16px">
+          <div class="input-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" class="form-input" placeholder="Ana" required>
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" class="form-input" placeholder="Cruz" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-input" placeholder="@yourname" required>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" class="form-input" placeholder="you@example.com" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-input" placeholder="At least 8 characters" required>
+          </div>
+          <p class="terms">By creating an account you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+          <button type="submit" class="btn-primary" style="width:100%;text-align:center;padding:14px">Create Free Account</button>
+        </form>
+        <p class="switch-text">Already have an account? <a href="#" onclick="switchTab('signin')">Sign in →</a></p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="../assets/js/main.js"></script>
+<script>
+function switchTab(tab) {
+  const signin = document.getElementById('signinPanel');
+  const register = document.getElementById('registerPanel');
+  const tabSI = document.getElementById('tabSignIn');
+  const tabR = document.getElementById('tabRegister');
+  if (tab === 'signin') {
+    signin.classList.remove('hidden');
+    register.classList.add('hidden');
+    tabSI.classList.add('active');
+    tabR.classList.remove('active');
+  } else {
+    register.classList.remove('hidden');
+    signin.classList.add('hidden');
+    tabR.classList.add('active');
+    tabSI.classList.remove('active');
+  }
+}
+// Check if URL has #register
+if (window.location.hash === '#register') switchTab('register');
+
+document.getElementById('loginForm')?.addEventListener('submit', async e => {
+  e.preventDefault();
+  const email = e.target.querySelector('input[type="email"]').value;
+  const password = e.target.querySelector('input[type="password"]').value;
+  
+  try {
+    const res = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
+    const data = await res.json();
+    if (res.ok) {
+      window.location.href = '../pages/dashboard.html';
+    } else {
+      alert(data.error || 'Login failed');
+    }
+  } catch (err) {
+    alert('Login failed. Please try again.');
+  }
+});
+document.getElementById('registerForm')?.addEventListener('submit', async e => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const data = Object.fromEntries(formData);
+  
+  try {
+    const res = await fetch('/api/auth/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    const result = await res.json();
+    if (res.ok) {
+      window.location.href = '../pages/dashboard.html';
+    } else {
+      alert(result.error || 'Registration failed');
+    }
+  } catch (err) {
+    alert('Registration failed. Please try again.');
+  }
+});
+</script>
+</body>
+</html>
