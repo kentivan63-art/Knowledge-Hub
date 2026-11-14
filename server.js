@@ -9,7 +9,7 @@ const path = require('path');
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname)));
@@ -26,11 +26,11 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/knowledge
     console.log('⚠️  Server will run without MongoDB (APIs will not work)');
   });
 
-// Session configuration (fallback to memory if MongoDB fails)
-const sessionStore = mongoConnected ? MongoStore.create({
+// Session configuration (stored in MongoDB via connect-mongo)
+const sessionStore = MongoStore.create({
   mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost:27017/knowledgehub',
   collectionName: 'sessions'
-}) : undefined;
+});
 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'knowledgehub-secret-key',
@@ -40,7 +40,8 @@ app.use(session({
   cookie: {
     maxAge: 1000 * 60 * 60 * 24, // 24 hours
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production'
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
   }
 }));
 

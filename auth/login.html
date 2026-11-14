@@ -171,6 +171,7 @@
   </div>
 </div>
 
+<script src="../assets/js/config.js"></script>
 <script src="../assets/js/main.js"></script>
 <script>
 function switchTab(tab) {
@@ -199,9 +200,10 @@ document.getElementById('loginForm')?.addEventListener('submit', async e => {
   const password = e.target.querySelector('input[type="password"]').value;
   
   try {
-    const res = await fetch('/api/auth/login', {
+    const res = await fetch(`${KH_API_BASE}/api/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
       body: JSON.stringify({ email, password })
     });
     const data = await res.json();
@@ -220,9 +222,10 @@ document.getElementById('registerForm')?.addEventListener('submit', async e => {
   const data = Object.fromEntries(formData);
   
   try {
-    const res = await fetch('/api/auth/register', {
+    const res = await fetch(`${KH_API_BASE}/api/auth/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
       body: JSON.stringify(data)
     });
     const result = await res.json();
