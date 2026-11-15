@@ -3,7 +3,6 @@ import crypto from "node:crypto";
 
 const SESSION_TTL = 86400; // 24 hours in seconds
 const COOKIE_NAME = "sessionId";
-const IS_PROD = env.NODE_ENV === "production";
 
 /**
  * Generate a random session ID.
@@ -61,17 +60,26 @@ export function kvSession() {
       req.sessionId = null;
     };
 
+    // Secure cookies require HTTPS — check the actual request, not NODE_ENV,
+    // so wrangler dev on http://localhost still stores the session cookie.
+    const isHttps =
+      req.secure ||
+      req.headers["x-forwarded-proto"] === "https" ||
+      (req.socket && req.socket.encrypted);
+
     const originalEnd = res.end.bind(res);
     res.end = function (...args) {
       if (req.sessionId && Object.keys(req.session).length > 0) {
-        env.SESSIONS.put(`session:${req.sessionId}`, JSON.stringify(req.session), {
-          expirationTtl: SESSION_TTL,
-        }).catch((err) => console.error("Session save error:", err));
-        const secure = IS_PROD ? "; Secure" : "";
+        const secure = isHttps ? "; Secure" : "";
         res.setHeader(
           "Set-Cookie",
           `${COOKIE_NAME}=${req.sessionId}; HttpOnly; Path=/; SameSite=Lax; Max-Age=${SESSION_TTL}${secure}`
         );
+        // Wait for the KV write before ending the response so workerd
+        // doesn't cancel the in-flight promise.
+        return env.SESSIONS.put(`session:${req.sessionId}`, JSON.stringify(req.session), {
+          expirationTtl: SESSION_TTL,
+        }).then(() => originalEnd(...args), () => originalEnd(...args));
       }
       return originalEnd(...args);
     };
