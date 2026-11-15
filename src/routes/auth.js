@@ -43,6 +43,7 @@ router.post("/register", async (req, res) => {
 
     req.session.userId = userId;
     req.session.userName = `${firstName} ${lastName}`;
+    req.session.username = username.toLowerCase();
     await req.session.save();
 
     res.status(201).json({
@@ -80,6 +81,7 @@ router.post("/login", async (req, res) => {
 
     req.session.userId = user.id;
     req.session.userName = `${user.first_name} ${user.last_name}`;
+    req.session.username = user.username;
     await req.session.save();
 
     res.json({
@@ -106,6 +108,7 @@ router.get("/check", (req, res) => {
       authenticated: true,
       userId: req.session.userId,
       userName: req.session.userName,
+      username: req.session.username || null,
     });
   } else {
     res.json({ authenticated: false });

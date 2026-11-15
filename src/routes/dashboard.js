@@ -1,6 +1,7 @@
 import express from "express";
 import { User } from "../db/users.js";
 import { Post } from "../db/posts.js";
+import { Comment } from "../db/comments.js";
 import { requireAuth } from "../middleware/auth.js";
 
 const router = express.Router();
@@ -15,10 +16,12 @@ router.get("/stats", requireAuth, async (req, res) => {
 
     const totalPosts = await Post.countPublishedByAuthor(user.id);
     const totalViews = await Post.sumViewsByAuthor(user.id);
+    const totalComments = await Comment.countByAuthor(user.id);
 
     res.json({
       totalViews,
       totalPosts,
+      totalComments,
       followers: user.followers,
       userName: `${user.first_name} ${user.last_name}`,
     });

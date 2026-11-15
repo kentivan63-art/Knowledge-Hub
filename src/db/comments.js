@@ -25,4 +25,14 @@ export const Comment = {
   async delete(id) {
     await execute("DELETE FROM comments WHERE id = ?", [id]);
   },
+
+  async countByAuthor(authorId) {
+    const row = await queryOne(
+      `SELECT COUNT(*) AS count FROM comments c
+       JOIN posts p ON c.post_id = p.id
+       WHERE p.author_id = ? AND p.status = 'published'`,
+      [authorId]
+    );
+    return row.count;
+  },
 };

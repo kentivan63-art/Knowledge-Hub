@@ -31,7 +31,7 @@ body { background: var(--bg2); }
 }
 .dash-profile h4 { font-family: var(--font-heading); font-weight: 700; font-size: 1rem; }
 .dash-profile p { font-size: 0.82rem; color: var(--text3); margin-top: 2px; }
-.dash-profile .badge { display: inline-block; background: var(--bg3); padding: 3px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; margin-top: 8px; color: var(--c2); }
+.dash-profile .badge { display: inline-block; background: var(--bg3); padding: 3px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; margin-top: 8px; color: var(--c2-text); }
 
 .dash-nav { padding: 20px 0; }
 .dash-nav-label { font-size: 0.72rem; font-weight: 700; color: var(--text3); letter-spacing: 1px; text-transform: uppercase; padding: 0 24px; margin-bottom: 8px; margin-top: 20px; }
@@ -72,7 +72,8 @@ body { background: var(--bg2); }
 .stat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
 .stat-card-label { font-size: 0.8rem; font-weight: 600; color: var(--text3); margin-bottom: 8px; }
 .stat-card-num { font-family: var(--font-display); font-size: 2rem; color: var(--text); }
-.stat-card-change { font-size: 0.78rem; color: #059669; font-weight: 600; margin-top: 6px; }
+.stat-card-change { font-size: 0.78rem; color: var(--success); font-weight: 600; margin-top: 6px; }
+.sample-tag { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.65; }
 
 /* GRID LAYOUT */
 .dash-grid { display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
@@ -85,7 +86,7 @@ body { background: var(--bg2); }
   padding: 24px;
 }
 .dash-widget h3 { font-family: var(--font-heading); font-weight: 700; font-size: 1rem; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
-.dash-widget h3 a { font-size: 0.82rem; color: var(--c2); font-weight: 500; }
+.dash-widget h3 a { font-size: 0.82rem; color: var(--c2-text); font-weight: 500; }
 
 /* POSTS TABLE */
 .posts-table { width: 100%; border-collapse: collapse; }
@@ -95,10 +96,10 @@ body { background: var(--bg2); }
 .post-title-cell { font-weight: 600; max-width: 220px; }
 .post-title-cell span { display: block; font-size: 0.78rem; color: var(--text3); font-weight: 400; margin-top: 2px; }
 .status-badge { display: inline-block; padding: 3px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; }
-.status-pub { background: rgba(5,150,105,0.12); color: #059669; }
-.status-draft { background: rgba(217,119,6,0.12); color: #D97706; }
+.status-pub { background: color-mix(in srgb, var(--success) 14%, transparent); color: var(--success); }
+.status-draft { background: color-mix(in srgb, var(--warning) 16%, transparent); color: var(--warning); }
 .post-actions { display: flex; gap: 6px; }
-.post-actions button { padding: 5px 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg2); color: var(--text3); font-size: 0.78rem; cursor: pointer; transition: var(--transition); }
+.post-actions button { padding: 5px 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg2); color: var(--text2); font-size: 0.78rem; cursor: pointer; transition: var(--transition); }
 .post-actions button:hover { background: var(--c1); color: white; border-color: var(--c1); }
 
 /* CHART BARS */
@@ -143,12 +144,70 @@ body { background: var(--bg2); }
 
 @media (max-width: 1024px) {
   .dash-sidebar { display: none; }
+  .dash-sidebar.open {
+    display: block;
+    position: fixed;
+    top: 70px; left: 0; bottom: 0;
+    width: 280px;
+    z-index: 950;
+    box-shadow: var(--shadow-lg);
+  }
+  .dash-hamburger { display: inline-flex !important; }
+  .dash-user-info { display: none !important; }
   .dash-main { padding: 24px 20px; }
+  .dash-topbar { flex-wrap: wrap; gap: 12px; }
   .stats-row { grid-template-columns: repeat(2,1fr); }
   .dash-grid { grid-template-columns: 1fr; }
 }
+.dash-hamburger {
+  display: none;
+  align-items: center; justify-content: center;
+  width: 40px; height: 40px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg2);
+  color: var(--text);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
 @media (max-width: 600px) {
   .stats-row { grid-template-columns: 1fr 1fr; }
+}
+
+/* Compact mobile dashboard — shrink everything to fit the viewport */
+@media (max-width: 600px) {
+  .dash-main { padding: 16px 12px; min-width: 0; }
+  .dash-wrapper { min-width: 0; }
+  .dash-topbar { margin-bottom: 20px; }
+  .dash-topbar h2 { font-size: 1.15rem; }
+  .dash-topbar p { font-size: 0.8rem !important; }
+  .dash-topbar-actions { width: 100%; }
+  .dash-topbar-actions button { flex: 1; padding: 9px 10px !important; font-size: 0.8rem !important; }
+
+  .stats-row { gap: 10px; margin-bottom: 20px; }
+  .stat-card { padding: 14px 12px; }
+  .stat-card-label { font-size: 0.7rem; }
+  .stat-card-num { font-size: 1.35rem; }
+  .stat-card-change { font-size: 0.68rem; }
+
+  .dash-grid { gap: 16px; }
+  .dash-widget { padding: 16px 14px; min-width: 0; }
+  .dash-widget h3 { font-size: 0.92rem; margin-bottom: 14px; }
+  .dash-widget h3 a { font-size: 0.75rem; }
+
+  /* Compact table — fits small screens, scroll only as fallback */
+  .posts-table { min-width: 0; font-size: 0.78rem; }
+  .posts-table th { font-size: 0.68rem; padding: 0 8px 10px 0; }
+  .posts-table td { padding: 10px 8px 10px 0; }
+  .post-title-cell { max-width: 110px; font-size: 0.8rem; }
+  .post-title-cell span { font-size: 0.7rem; }
+  .status-badge { font-size: 0.68rem; padding: 2px 8px; }
+  .post-actions button { padding: 4px 7px; font-size: 0.7rem; }
+
+  .mini-chart { height: 60px; }
+  .bar-labels span { font-size: 0.62rem; }
+  .quick-actions { gap: 8px; }
+  .quick-btn { padding: 14px 8px; font-size: 0.78rem; }
 }
 </style>
 </head>
@@ -162,10 +221,11 @@ body { background: var(--bg2); }
   </div>
   <div class="nav-actions">
     <button class="theme-toggle" id="themeToggle"><span class="sun">☀️</span><span class="moon">🌙</span></button>
-    <div style="display:flex;align-items:center;gap:10px">
-      <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#FF6B35,#7C3AED);display:flex;align-items:center;justify-content:center;color:white;font-family:var(--font-display);font-size:0.9rem;cursor:pointer">A</div>
-      <a href="../index.html" style="font-size:0.85rem;color:var(--text3);font-weight:600">Sign Out</a>
-    </div>
+    <span class="dash-user-info" style="display:flex;align-items:center;gap:10px">
+      <div id="topbarAvatar" style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#FF6B35,#7C3AED);display:flex;align-items:center;justify-content:center;color:white;font-family:var(--font-display);font-size:0.9rem;cursor:pointer">A</div>
+      <a href="#" onclick="signOut();return false;" style="font-size:0.85rem;color:var(--text3);font-weight:600">Sign Out</a>
+    </span>
+    <button class="dash-hamburger" id="dashHamburger" aria-label="Toggle menu">☰</button>
   </div>
 </nav>
 
@@ -196,7 +256,7 @@ body { background: var(--bg2); }
       <a href="#"><span class="nav-icon">👤</span> Profile</a>
       <a href="services.html"><span class="nav-icon">⭐</span> Upgrade to Pro</a>
       <a href="#"><span class="nav-icon">⚙️</span> Settings</a>
-      <a href="../index.html"><span class="nav-icon">🚪</span> Sign Out</a>
+      <a href="#" onclick="signOut();return false;"><span class="nav-icon">🚪</span> Sign Out</a>
     </nav>
   </aside>
 
@@ -220,22 +280,22 @@ body { background: var(--bg2); }
       <div class="stat-card reveal" style="--sc:#FF6B35">
         <div class="stat-card-label">Total Views</div>
         <div class="stat-card-num">4,821</div>
-        <div class="stat-card-change">↑ 12% this week</div>
+        <div class="stat-card-change">↑ 12% this week · <span class="sample-tag">sample</span></div>
       </div>
       <div class="stat-card reveal" style="--sc:#7C3AED">
         <div class="stat-card-label">Total Posts</div>
         <div class="stat-card-num">14</div>
-        <div class="stat-card-change">↑ 2 new this month</div>
+        <div class="stat-card-change">↑ 2 new this month · <span class="sample-tag">sample</span></div>
       </div>
       <div class="stat-card reveal" style="--sc:#059669">
         <div class="stat-card-label">Followers</div>
         <div class="stat-card-num">382</div>
-        <div class="stat-card-change">↑ 28 this week</div>
+        <div class="stat-card-change">↑ 28 this week · <span class="sample-tag">sample</span></div>
       </div>
       <div class="stat-card reveal" style="--sc:#0891B2">
         <div class="stat-card-label">Comments</div>
         <div class="stat-card-num">96</div>
-        <div class="stat-card-change">↑ 5 today</div>
+        <div class="stat-card-change">↑ 5 today · <span class="sample-tag">sample</span></div>
       </div>
     </div>
 
@@ -248,6 +308,7 @@ body { background: var(--bg2); }
         <!-- VIEWS CHART -->
         <div class="dash-widget reveal">
           <h3>Views This Week <a href="#">Full report →</a></h3>
+          <p class="sample-tag" style="margin:-8px 0 12px">sample data</p>
           <div class="mini-chart">
             <div class="bar" style="height:35%"></div>
             <div class="bar" style="height:55%"></div>
@@ -265,6 +326,7 @@ body { background: var(--bg2); }
         <!-- MY POSTS TABLE -->
         <div class="dash-widget reveal">
           <h3>My Posts <a href="#">View all →</a></h3>
+          <div class="table-scroll">
           <table class="posts-table">
             <thead>
               <tr>
@@ -301,6 +363,7 @@ body { background: var(--bg2); }
               </tr>
             </tbody>
           </table>
+          </div>
         </div>
 
       </div>
@@ -319,48 +382,6 @@ body { background: var(--bg2); }
           </div>
         </div>
 
-        <!-- ACTIVITY FEED -->
-        <div class="dash-widget reveal">
-          <h3>Recent Activity</h3>
-          <div class="activity-list">
-            <div class="activity-item">
-              <div class="activity-icon" style="background:rgba(255,107,53,0.12)">❤️</div>
-              <div class="activity-text">
-                <strong>Marco Lee</strong> liked your post "Bold Typography in 2025"
-                <span class="activity-time">2 minutes ago</span>
-              </div>
-            </div>
-            <div class="activity-item">
-              <div class="activity-icon" style="background:rgba(124,58,237,0.12)">👤</div>
-              <div class="activity-text">
-                <strong>Sita Ramos</strong> started following you
-                <span class="activity-time">1 hour ago</span>
-              </div>
-            </div>
-            <div class="activity-item">
-              <div class="activity-icon" style="background:rgba(5,150,105,0.12)">💬</div>
-              <div class="activity-text">
-                <strong>Jay Mendoza</strong> commented on your post
-                <span class="activity-time">3 hours ago</span>
-              </div>
-            </div>
-            <div class="activity-item">
-              <div class="activity-icon" style="background:rgba(8,145,178,0.12)">🔖</div>
-              <div class="activity-text">
-                <strong>Kira Tan</strong> bookmarked "My Design Process"
-                <span class="activity-time">Yesterday</span>
-              </div>
-            </div>
-            <div class="activity-item">
-              <div class="activity-icon" style="background:rgba(217,119,6,0.12)">🏆</div>
-              <div class="activity-text">
-                Your post reached <strong>1,000 views!</strong>
-                <span class="activity-time">2 days ago</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <!-- UPGRADE PROMO -->
         <div class="dash-widget reveal" style="background:linear-gradient(135deg,var(--c2),var(--c8));border:none;color:white">
           <h3 style="color:white;margin-bottom:12px">⭐ Go Pro</h3>
@@ -376,7 +397,7 @@ body { background: var(--bg2); }
 <!-- NEW POST MODAL -->
 <div class="modal-overlay" id="newPostModal">
   <div class="modal-box">
-    <h3>✍️ Create New Post</h3>
+    <h3 id="modalTitle">✍️ Create New Post</h3>
     <div class="modal-form">
       <div class="form-group">
         <label style="font-weight:600;font-size:0.9rem">Post Title</label>
@@ -384,15 +405,16 @@ body { background: var(--bg2); }
       </div>
       <div class="form-group">
         <label style="font-weight:600;font-size:0.9rem">Topic / Category</label>
-        <select class="form-input">
-          <option>🎨 Design</option>
-          <option>🚀 Tech</option>
-          <option>🌱 Growth</option>
-          <option>❤️ Lifestyle</option>
-          <option>📚 Education</option>
-          <option>🎵 Music</option>
-          <option>📸 Photography</option>
-          <option>💡 Ideas</option>
+        <select class="form-input" id="postCategory">
+          <option value="Design">🎨 Design</option>
+          <option value="Tech">🚀 Tech</option>
+          <option value="Growth">🌱 Growth</option>
+          <option value="Lifestyle">❤️ Lifestyle</option>
+          <option value="Education">📚 Education</option>
+          <option value="Music">🎵 Music</option>
+          <option value="Photography">📸 Photography</option>
+          <option value="Ideas">💡 Ideas</option>
+          <option value="General">General</option>
         </select>
       </div>
       <div class="form-group">
@@ -400,9 +422,9 @@ body { background: var(--bg2); }
         <textarea class="form-input" rows="5" placeholder="Start writing your post here..."></textarea>
       </div>
       <div class="modal-footer">
-        <button class="btn-ghost" style="padding:10px 24px" onclick="closeModal()">Cancel</button>
-        <button class="btn-ghost" style="padding:10px 24px" onclick="saveDraft()">Save Draft</button>
-        <button class="btn-primary" style="padding:10px 24px" onclick="publishPost()">Publish</button>
+        <button class="btn-ghost" id="modalCancelBtn" style="padding:10px 24px" onclick="closeModal()">Cancel</button>
+        <button class="btn-ghost" id="modalDraftBtn" style="padding:10px 24px" onclick="submitPost('draft')">Save Draft</button>
+        <button class="btn-primary" id="modalPublishBtn" style="padding:10px 24px" onclick="submitPost('published')">Publish</button>
       </div>
     </div>
   </div>
@@ -419,6 +441,10 @@ body { background: var(--bg2); }
 <script src="../assets/js/main.js"></script>
 <script>
 // Fetch dashboard data on load
+function escapeHtml(s) {
+  return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
 async function loadDashboard() {
   try {
     // Check authentication
@@ -432,9 +458,13 @@ async function loadDashboard() {
 
     // Update user name in greeting and sidebar
     const userName = authData.userName || 'User';
-    document.querySelector('.dash-topbar h2').textContent = `Good morning, ${userName.split(' ')[0]}! 👋`;
+    const hour = new Date().getHours();
+    const daypart = hour < 12 ? 'morning' : hour < 18 ? 'afternoon' : 'evening';
+    document.querySelector('.dash-topbar h2').textContent = `Good ${daypart}, ${userName.split(' ')[0]}! 👋`;
     document.querySelector('.dash-profile h4').textContent = userName;
     document.querySelector('.dash-avatar').textContent = userName.charAt(0).toUpperCase();
+    document.getElementById('topbarAvatar').textContent = userName.charAt(0).toUpperCase();
+    document.querySelector('.dash-profile p').textContent = authData.username ? `@${authData.username}` : '';
 
     // Fetch dashboard stats
     const statsRes = await fetch(`${KH_API_BASE}/api/dashboard/stats`, { credentials: 'include' });
@@ -444,10 +474,12 @@ async function loadDashboard() {
     document.querySelector('.stat-card:nth-child(1) .stat-card-num').textContent = statsData.totalViews.toLocaleString();
     document.querySelector('.stat-card:nth-child(2) .stat-card-num').textContent = statsData.totalPosts;
     document.querySelector('.stat-card:nth-child(3) .stat-card-num').textContent = statsData.followers;
+    document.querySelector('.stat-card:nth-child(4) .stat-card-num').textContent = statsData.totalComments ?? 0;
 
     // Fetch user's posts
     const postsRes = await fetch(`${KH_API_BASE}/api/posts/my-posts`, { credentials: 'include' });
     const postsData = await postsRes.json();
+    postsCache = postsData;
 
     // Update posts table
     const postsTableBody = document.querySelector('.posts-table tbody');
@@ -464,7 +496,7 @@ async function loadDashboard() {
         
         postsTableBody.innerHTML += `
           <tr>
-            <td class="post-title-cell">${post.title}<span>${post.category} · ${date}</span></td>
+            <td class="post-title-cell">${escapeHtml(post.title)}<span>${escapeHtml(post.category)} · ${date}</span></td>
             <td><span class="status-badge ${statusClass}">${statusLabel}</span></td>
             <td>${views}</td>
             <td><div class="post-actions"><button onclick="editPost('${post._id}')">Edit</button><button onclick="deletePost('${post._id}')">Delete</button></div></td>
@@ -477,70 +509,76 @@ async function loadDashboard() {
   }
 }
 
+let postsCache = [];
+let editingPostId = null;
+
+function postFormFields() {
+  return {
+    title: document.querySelector('#newPostModal input[type="text"]').value.trim(),
+    category: document.getElementById('postCategory').value,
+    content: document.querySelector('#newPostModal textarea').value.trim(),
+  };
+}
+
+function resetPostForm() {
+  document.querySelector('#newPostModal input[type="text"]').value = '';
+  document.getElementById('postCategory').value = 'General';
+  document.querySelector('#newPostModal textarea').value = '';
+  editingPostId = null;
+  document.getElementById('modalTitle').textContent = '✍️ Create New Post';
+  document.getElementById('modalPublishBtn').textContent = 'Publish';
+  document.getElementById('modalDraftBtn').textContent = 'Save Draft';
+}
+
+function setModalBusy(busy) {
+  ['modalCancelBtn', 'modalDraftBtn', 'modalPublishBtn'].forEach(id => {
+    document.getElementById(id).disabled = busy;
+  });
+  document.getElementById('modalPublishBtn').textContent = busy
+    ? (editingPostId ? 'Saving…' : 'Publishing…')
+    : (editingPostId ? 'Save Changes' : 'Publish');
+}
+
 function openModal() {
+  resetPostForm();
   document.getElementById('newPostModal').classList.add('open');
 }
 function closeModal() {
   document.getElementById('newPostModal').classList.remove('open');
+  resetPostForm();
 }
 
-async function saveDraft() {
-  const title = document.querySelector('#newPostModal input[type="text"]').value;
-  const category = document.querySelector('#newPostModal select').value;
-  const content = document.querySelector('#newPostModal textarea').value;
-  
+async function submitPost(status) {
+  const { title, category, content } = postFormFields();
   if (!title || !content) {
-    alert('Please fill in all fields');
+    showToast('Please fill in title and story', 'error');
     return;
   }
 
+  const isEdit = !!editingPostId;
+  const url = isEdit ? `${KH_API_BASE}/api/posts/${editingPostId}` : `${KH_API_BASE}/api/posts`;
+
+  setModalBusy(true);
   try {
-    const res = await fetch(`${KH_API_BASE}/api/posts`, {
-      method: 'POST',
+    const res = await fetch(url, {
+      method: isEdit ? 'PUT' : 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
-      body: JSON.stringify({ title, category, content, status: 'draft' })
+      body: JSON.stringify({ title, category, content, status })
     });
-    
+    const data = await res.json().catch(() => ({}));
+
     if (res.ok) {
-      alert('📝 Draft saved!');
+      showToast(isEdit ? '✅ Post updated!' : (status === 'published' ? '🎉 Post published!' : '📝 Draft saved!'));
       closeModal();
       loadDashboard();
     } else {
-      alert('Failed to save draft');
+      showToast(data.error || 'Failed to save post', 'error');
     }
   } catch (error) {
-    alert('Failed to save draft');
-  }
-}
-
-async function publishPost() {
-  const title = document.querySelector('#newPostModal input[type="text"]').value;
-  const category = document.querySelector('#newPostModal select').value;
-  const content = document.querySelector('#newPostModal textarea').value;
-  
-  if (!title || !content) {
-    alert('Please fill in all fields');
-    return;
-  }
-
-  try {
-    const res = await fetch(`${KH_API_BASE}/api/posts`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
-      body: JSON.stringify({ title, category, content, status: 'published' })
-    });
-    
-    if (res.ok) {
-      alert('🎉 Your post has been published!');
-      closeModal();
-      loadDashboard();
-    } else {
-      alert('Failed to publish post');
-    }
-  } catch (error) {
-    alert('Failed to publish post');
+    showToast('Network error — please try again', 'error');
+  } finally {
+    setModalBusy(false);
   }
 }
 
@@ -554,22 +592,64 @@ async function deletePost(postId) {
     });
     
     if (res.ok) {
-      alert('Post deleted successfully');
+      showToast('Post deleted');
       loadDashboard();
     } else {
-      alert('Failed to delete post');
+      showToast('Failed to delete post', 'error');
     }
   } catch (error) {
-    alert('Failed to delete post');
+    showToast('Failed to delete post', 'error');
   }
 }
 
 function editPost(postId) {
-  alert('Edit functionality coming soon!');
+  const post = postsCache.find(p => String(p._id) === String(postId));
+  if (!post) {
+    showToast('Post not found — try refreshing', 'error');
+    return;
+  }
+
+  document.querySelector('#newPostModal input[type="text"]').value = post.title || '';
+  const select = document.getElementById('postCategory');
+  const match = [...select.options].find(o =>
+    o.value.toLowerCase() === (post.category || '').toLowerCase() ||
+    o.text.toLowerCase().includes((post.category || '').toLowerCase())
+  );
+  select.value = match ? match.value : 'General';
+  document.querySelector('#newPostModal textarea').value = post.content || '';
+
+  editingPostId = post._id;
+  document.getElementById('modalTitle').textContent = '✏️ Edit Post';
+  document.getElementById('modalPublishBtn').textContent = post.status === 'published' ? 'Save Changes' : 'Publish';
+  document.getElementById('newPostModal').classList.add('open');
+}
+
+async function signOut() {
+  try {
+    await fetch(`${KH_API_BASE}/api/auth/logout`, { method: 'POST', credentials: 'include' });
+  } catch (e) {
+    // ignore — redirect anyway
+  }
+  window.location.href = '../auth/login.html';
 }
 
 document.getElementById('newPostModal').addEventListener('click', function(e) {
   if (e.target === this) closeModal();
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeModal();
+    document.querySelector('.dash-sidebar')?.classList.remove('open');
+  }
+});
+
+// Mobile sidebar toggle
+document.getElementById('dashHamburger')?.addEventListener('click', () => {
+  document.querySelector('.dash-sidebar')?.classList.toggle('open');
+});
+document.querySelectorAll('.dash-nav a').forEach(a => {
+  a.addEventListener('click', () => document.querySelector('.dash-sidebar')?.classList.remove('open'));
 });
 
 // Load dashboard when page loads

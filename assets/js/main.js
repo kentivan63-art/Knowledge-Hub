@@ -159,6 +159,53 @@ contactForm?.addEventListener('submit', e => {
 // ---- LOGIN / REGISTER FORM ----
 
 
+// ---- TOAST NOTIFICATIONS ----
+function showToast(message, type = 'success') {
+  let container = document.querySelector('.toast-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.className = 'toast-container';
+    document.body.appendChild(container);
+  }
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.textContent = message;
+  container.appendChild(toast);
+  requestAnimationFrame(() => toast.classList.add('show'));
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 350);
+  }, 3200);
+}
+
+// ---- AUTH-AWARE NAV (shows Dashboard + avatar when logged in) ----
+(function initAuthNav() {
+  const API = window.KH_API_BASE || '';
+  fetch(`${API}/api/auth/check`, { credentials: 'include' })
+    .then(r => r.json())
+    .then(d => {
+      if (!d.authenticated) return;
+      const initial = (d.userName || 'U').charAt(0).toUpperCase();
+      const dashPath = '/pages/dashboard.html';
+
+      // Navbar "Sign In" button -> avatar + "Dashboard"
+      document.querySelectorAll('a.btn-nav').forEach(el => {
+        el.href = dashPath;
+        el.innerHTML = `<span class="nav-avatar">${initial}</span>Dashboard`;
+      });
+
+      // Hamburger/mobile menu "Sign In" links -> "Dashboard"
+      document.querySelectorAll('#mobileMenu a').forEach(a => {
+        const href = a.getAttribute('href') || '';
+        if (href.includes('login.html')) {
+          a.textContent = 'Dashboard';
+          a.href = dashPath;
+        }
+      });
+    })
+    .catch(() => { /* not logged in or API unreachable — leave Sign In as-is */ });
+})();
+
 // ---- APPLY SAVED THEME ON ALL PAGES ----
 (function() {
   const t = localStorage.getItem('kh-theme') || 'light';

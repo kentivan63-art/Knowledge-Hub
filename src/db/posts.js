@@ -7,6 +7,8 @@ function rowToPost(row) {
     _id: row.id,
     authorName: row.author_name,
     author_id: row.author_id,
+    createdAt: row.created_at,
+    updatedAt: row.updated_at,
     tags: safeParseTags(row.tags),
   };
 }

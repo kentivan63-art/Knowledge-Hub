@@ -21,11 +21,7 @@
 			"database_id": "2df8ff6a-9100-46c3-ad15-4db0721fb2f7",
 			"migrations_dir": "migrations"
 		},
-		{
-			"binding": "knowledgehub_db",
-			"database_name": "knowledgehub-db",
-			"database_id": "2df8ff6a-9100-46c3-ad15-4db0721fb2f7"
-		}
+		
 	],
 	"kv_namespaces": [
 		{
