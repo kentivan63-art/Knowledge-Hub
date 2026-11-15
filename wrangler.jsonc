@@ -1,0 +1,39 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "knowledgehub",
+	"main": "src/index.js",
+	"compatibility_date": "2026-11-13",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"observability": {
+		"enabled": true
+	},
+	"assets": {
+		"directory": "./",
+		"binding": "ASSETS",
+		"html_handling": "none"
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "knowledgehub-db",
+			"database_id": "2df8ff6a-9100-46c3-ad15-4db0721fb2f7",
+			"migrations_dir": "migrations"
+		},
+		{
+			"binding": "knowledgehub_db",
+			"database_name": "knowledgehub-db",
+			"database_id": "2df8ff6a-9100-46c3-ad15-4db0721fb2f7"
+		}
+	],
+	"kv_namespaces": [
+		{
+			"binding": "SESSIONS",
+			"id": "7141f03c0e594d96ba539b1e6ec601ac"
+		}
+	],
+	"vars": {
+		"NODE_ENV": "production"
+	}
+}
